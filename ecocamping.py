@@ -18,5 +18,22 @@ while ejecutando:
     if opcion == 1:
         disponibles = capacidad_maxima-sitios_ocupados
         print(F"\n[INFO] Sitios libres para recibir vehiculos: {disponibles}")
+    elif opcion == 2:
+        sitios_libres = capacidad_maxima-sitios_ocupados
+        if sitios_libres == 0:
+            print("Lo sentimos, no quedan espacios en el camping")
+        else:
+            try:
+                ingreso = int(input("¿Cuantos sitios o vehiculos van a ingresar"))
+                if ingreso <= 0:
+                    print("Error: la cantidad de ingreso debe ser mayor a 0")
+                elif ingreso > sitios_libres:
+                    print(f"Solo puede ingresar un maximo de {sitios_libres} sitios")
+                else:
+                    sitios_ocupados += ingreso
+                    print(f"Ingreso registrado, se han ocupado {ingreso} de sitios")
+            except ValueError:
+                print("Error: Debe ingresar un número valido")
+
     else:
         print("Opcion fuera de rango")
